@@ -17,6 +17,8 @@
 5. Hotfix
     Hotfix branch will be created from the master branch, this branch comes in when there's some very important fix to be done as soon as possible and sent back for production.
 
+![Image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G9QJE5NVTyP6zfdjFOFK0g.png)
+
 ### Let us understand how we shall be usin these all branches and what will be the impact of each branch.
 
 At this point let us assume we already had a Master and Develop branch.
