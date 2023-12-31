@@ -1,0 +1,61 @@
+Tomcat is an open-source application server developed by the Apache Software Foundation. It is a servlet container that implements the Java Servlet and JavaServer Pages (JSP) specifications, providing a platform for running Java-based web applications. Tomcat is used to deploy, manage, and serve Java web applications, making it a popular choice for hosting dynamic websites and web services written in Java.
+
+Prerequisite
+AWS Acccount.
+Create Redhat EC2 T2.micro Instance.
+Create Security Group and open Tomcat ports or Required ports.
+8080 ..etc
+Attach Security Group to EC2 Instance.
+Install java openJDK 1.8+
+
+####################################################
+
+#!/bin/bash
+#TOMCAT.sh
+
+#1. Steps for Installing tomcat9 on rhel7&8
+# install Java JDK 1.8+ as a pre-requisit for tomcat to run.
+# https://github.com/LandmakTechnology/package-management/tree/main/Tomcat-installation
+sudo hostnamectl set-hostname tomcat
+cd /opt
+sudo yum install git wget vim -y
+sudo yum install java-1.8.0-openjdk-devel -y
+
+# Download tomcat software and extract it.
+# dowanload and extract tomcat software
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.83/bin/apache-tomcat-9.0.83.tar.gz
+sudo tar -xvf apache-tomcat-9.0.83.tar.gz
+sudo rm apache-tomcat-9.0.83.tar.gz
+sudo mv apache-tomcat-9.0.83 tomcat9
+sudo chmod 777 -R /opt/tomcat9
+sudo sh /opt/tomcat9/bin/startup.sh
+
+# create a soft link to start and stop tomcat from anywhere
+# to manage tomcat as a service
+sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat
+sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
+sudo starttomcat
+echo "end on tomcat installation"
+sudo su - ec2-user
+
+#####################################################
+
+#2. Start of tomcat configuration 
+
+#Tomcat server configuration:
+find / -name server.xml context.xml
+vim /opt/tomcat9/conf/server.xml
+vi /opt/tomcat9/webapps/manager/META-INF/context.xml
+vi /opt/tomcat9/conf/tomcat-users.xml  # to add user
+
+	<user username="landmark" password="admin" roles="manager-gui,admin-gui"/>
+	
+
+/opt/tomcat9/conf/context.xml
+
+ vi /opt/tomcat9/webapps/manager/META-INF/context.xml
+  
+  vi /opt/tomcat9/conf/tomcat-users.xml  # to add user
+  
+	
+	username YourName password=PassWord   roles=manager-gui
