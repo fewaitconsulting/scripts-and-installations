@@ -18,16 +18,26 @@ Install java openJDK 1.8+
 # https://github.com/LandmakTechnology/package-management/tree/main/Tomcat-installation
 sudo hostnamectl set-hostname tomcat
 cd /opt
+
+# install Java JDK 1.8+ as a pre-requisit for tomcat to run.
 sudo yum install git wget vim -y
 sudo yum install java-1.8.0-openjdk-devel -y
 
 # Download tomcat software and extract it.
 # dowanload and extract tomcat software
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.83/bin/apache-tomcat-9.0.83.tar.gz
-sudo tar -xvf apache-tomcat-9.0.83.tar.gz
-sudo rm apache-tomcat-9.0.83.tar.gz
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.83/bin/apache-tomcat-9.0.83.zip
+sudo yum install unzip -y
+sudo unzip apache-tomcat-9.0.83.zip
+sudo rm -rf apache-tomcat-9.0.83.zip
+
+### rename tomcat for good naming convention
 sudo mv apache-tomcat-9.0.83 tomcat9
+
+### assign executable permissions to the tomcat home directory
 sudo chmod 777 -R /opt/tomcat9
+sudo chown ec2-user -R /opt/tomcat9
+
+### start tomcat
 sudo sh /opt/tomcat9/bin/startup.sh
 
 # create a soft link to start and stop tomcat from anywhere
@@ -43,10 +53,13 @@ sudo su - ec2-user
 #2. Start of tomcat configuration 
 
 #Tomcat server configuration:
-find / -name server.xml context.xml
-vim /opt/tomcat9/conf/server.xml
-vi /opt/tomcat9/webapps/manager/META-INF/context.xml
-vi /opt/tomcat9/conf/tomcat-users.xml  # to add user
+#Search for the files server.xml and context.xml
+sudo find / -name server.xml 
+sudo find / -name context.xml
+
+sudo vim /opt/tomcat9/conf/server.xml
+sudo vi /opt/tomcat9/webapps/manager/META-INF/context.xml
+sudo vi /opt/tomcat9/conf/tomcat-users.xml  # to add user
 
 	<user username="landmark" password="admin" roles="manager-gui,admin-gui"/>
 	
