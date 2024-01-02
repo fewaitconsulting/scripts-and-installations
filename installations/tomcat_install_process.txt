@@ -1,4 +1,4 @@
-Tomcat is an open-source application server developed by the Apache Software Foundation. It is a servlet container that implements the Java Servlet and JavaServer Pages (JSP) specifications, providing a platform for running Java-based web applications. Tomcat is used to deploy, manage, and serve Java web applications, making it a popular choice for hosting dynamic websites and web services written in Java.
+ Tomcat is an open-source application server developed by the Apache Software Foundation. It is a servlet container that implements the Java Servlet and JavaServer Pages (JSP) specifications, providing a platform for running Java-based web applications. Tomcat is used to deploy, manage, and serve Java web applications, making it a popular choice for hosting dynamic websites and web services written in Java.
 
 Prerequisite
 AWS Acccount.
@@ -57,18 +57,57 @@ sudo su - ec2-user
 sudo find / -name server.xml 
 sudo find / -name context.xml
 
-sudo vim /opt/tomcat9/conf/server.xml
+sudo vi /opt/tomcat9/conf/server.xml # you can change the port number here
+# inside the connector tag
+
+
+# To enable external access to tomcat server,
 sudo vi /opt/tomcat9/webapps/manager/META-INF/context.xml
-sudo vi /opt/tomcat9/conf/tomcat-users.xml  # to add user
 
-	<user username="landmark" password="admin" roles="manager-gui,admin-gui"/>
+# Comment the following line of code in context.xml 
+
+<!--
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+        allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+  -->
+
+sudo vi /opt/tomcat9/conf/tomcat-users.xml  # to add users
+
+<user username="landmark" password="admin" roles="manager-gui,admin-gui"/>
+<user username="YourName" password="PassWord" roles="manager-gui"/>
 	
 
-/opt/tomcat9/conf/context.xml
+  
 
- vi /opt/tomcat9/webapps/manager/META-INF/context.xml
-  
-  vi /opt/tomcat9/conf/tomcat-users.xml  # to add user
-  
-	
-	username YourName password=PassWord   roles=manager-gui
+
+
+
+
+
+
+
+
+
+###############################################################
+#Deploying from maven server directly to tomcat
+# Once tomcat and maven servers are running and configured,
+
+cd ts # cd into ts folder
+mv maven-web-application/ web 	# rename the folder to web preferably
+
+cd web/ 			# cd into web folder, here you'll find the target folder
+
+ls target/ 			# here you'll find all your built artifacts
+
+vi key.pem 			# create key.pem in which you past your tomcat server keypair that you saved
+
+ls -l key.pem 			# ensure your key is available and see the permissions
+
+chmod 400 key.pem		# secure the permisions and allow read-only right to user, run previews command to verify
+
+scp -i key.pem target/<your-artifact.war> ec2-user@<public-ip-address>:/opt/tomcat9/webapps/ # deploy .war app to tomcat
+
+
+
+
+
