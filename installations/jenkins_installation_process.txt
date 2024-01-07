@@ -1,0 +1,58 @@
+Jenkins Server installation
+
+Credentials
+
+admin
+admin123
+
+Jenkins URL: http://3.15.235.211:8080/
+
+Version installed
+jenkins --version
+2.426.2
+
+Created symlink /etc/systemd/system/multi-user.target.wants/jenkins.service → /usr/lib/systemd/system/jenkins.service.
+
+Needs of Jenkins: The Seven C's
+Continuous Integration
+Continuous Testing
+Continuous Security
+Continuous Delivery
+Continuous Deployment
+Continuous Monitoring
+Continuous Development
+
+************************************************************************
+script run below
+
+#!/bin/bash
+sudo timedatectl set-timezone America/New_York
+sudo hostnamectl set-hostname jenkins
+sudo yum install wget tree vim git nano unzip -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum upgrade -y
+# Add required dependencies for the jenkins package
+sudo yum install java-17-openjdk -y
+sudo yum install jenkins -y
+sudo systemctl daemon-reload
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+echo "echo of jenkins installation"
+sudo su - ec2-user
+
+**********************************************************************
+->after installation, login to the web using ip address and port 8080
+->create initial admin user as guided by the web
+
+Jenkins is managed by the jenkins user as a security measure
+Not as root, because it can be risky and vulnerable
+
+## let's grep for jenkins user and change bash from bin/false to bin/bash
+grep jenkins  /etc/passwd
+
+sudo vi /etc/passwd
+
+
