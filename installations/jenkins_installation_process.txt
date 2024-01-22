@@ -23,14 +23,13 @@ Continuous Monitoring
 Continuous Development
 
 ************************************************************************
-script run below
+script run below on redhat
 
 #!/bin/bash
 sudo timedatectl set-timezone America/New_York
 sudo hostnamectl set-hostname jenkins
 sudo yum install wget tree vim git nano unzip -y
-sudo wget -O /etc/yum.repos.d/jenkins.repo \
-    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo wget -O /etc/yum.repos.d/jenkins.repo \ https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 sudo yum upgrade -y
 # Add required dependencies for the jenkins package
@@ -40,10 +39,31 @@ sudo systemctl daemon-reload
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
-echo "echo of jenkins installation"
+echo "end of jenkins installation"
 sudo su - ec2-user
 
 **********************************************************************
+
+************************************************************************
+script run below on centOS
+
+#!/bin/bash
+sudo yum install epel-release -y
+sudo yum install java-11-openjdk -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo --no-check-certificate
+sudo rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum install jenkins -y
+echo "end of jenkins installation"
+sudo su - ec2-user
+
+**********************************************************************
+in case u wish to change the port number for accessing jenkins, modify 
+this variable: 
+Environment="JENKINS_PORT="
+by running this command to open the file:
+sudo vi /lib/systemd/system/jenkins.service
+**********************************************************************
+
 ->after installation, login to the web using ip address and port 8080
 ->create initial admin user as guided by the web
 
@@ -54,5 +74,22 @@ Not as root, because it can be risky and vulnerable
 grep jenkins  /etc/passwd
 
 sudo vi /etc/passwd
+
+#now switch user to jenkins
+sudo su - jenkins
+
+# go to the sudoers
+sudo vi /etc/sudoers
+
+*******************************************************************
+# how to uninstall jenkins
+grep jenkins /etc/passwd
+
+sudo yum remove jenkins -y
+
+sudo userdel -D jenkins
+
+#jenkins lives in /var/lib/jenkins
+
 
 

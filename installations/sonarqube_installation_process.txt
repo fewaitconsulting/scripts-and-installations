@@ -1,0 +1,50 @@
+SonarQube Installation on AWS
+Prerequisite 
+• Have an AWS Account. 
+• Create Redhat EC2 T2.medium Instance with minimum of 4GB RAM. 
+• Create Security Group and open Required ports 9000 
+• Attach Security Group to EC2 Instance. 
+• Install java openJDK 1.8+ for SonarQube version 7.8. 
+
+Create sonar user to manage the SonarQube server 
+For optimal security measures, it's recommended not to run the SonarQube Server using the 
+root user.  Instead, create a new user specifically for SonarQube, named 'sonar', and grant it 
+necessary sudo access to manage Sonar services. Follow these steps: 
+
+1. Create a new user named 'sonar': sudo useradd sonar 
+2. Grant sudo access to the 'sonar' user for managing Sonar services:     
+                                     
+sudo echo 'sonar ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/sonar 
+
+The 'sudo' command allows temporary superuser privileges to execute 'echo' and 'tee' 
+commands.  This line adds an entry to the sudoers file ('/etc/sudoers.d/sonar')  that 
+permits the 'sonar' user to execute commands with 'sudo' (superuser) privileges without 
+requiring a password ('NOPASSWD:ALL'). 
+
+3. Set the hostname for the SonarQube server: sudo hostnamectl set-hostname sonar 
+4. Switch to the 'sonar' user profile: sudo su – sonar
+ 
+Enable Password Authentication in the server 
+To enable password authentication via SSH, you can modify the SSH configuration using the 
+following commands: 
+1. Adjust the SSH configuration to allow password authentication: 
+sudo sed -i 
+'/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes' 
+/etc/ssh/sshd_config 
+2. Restart the SSH service to apply the changes: sudo service sshd restart 
+
+Install Java JDK 1.8+ required for SonarQube to start 
+Navigate to the '/opt' directory and install necessary tools using the following commands: 
+1. Change directory to '/opt': cd /opt 
+2. Install essential packages - 'unzip', 'wget', and 'git': sudo yum -y install unzip wget git 
+3. Proceed to install Java Development Kit 11: sudo yum install java-11-openjdk-devel 
+
+Download and extract the SonarqQube Server software. 
+Download the SonarQube package, extract its contents, and organize them with the following 
+commands: 
+1. Fetch the SonarQube package: sudo wget 
+https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.8.zip 
+2. Unzip the downloaded package: sudo unzip sonarqube-7.8.zip 
+3. Remove the downloaded zip file (cleanup): sudo rm -rf sonarqube-7.8.zip 
+4. Rename the extracted folder to 'sonarqube' for convenience: sudo mv sonarqube-7.8 
+sonarqube 
