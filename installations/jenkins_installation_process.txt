@@ -33,7 +33,7 @@ sudo wget -O /etc/yum.repos.d/jenkins.repo \ https://pkg.jenkins.io/redhat-stabl
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 sudo yum upgrade -y
 # Add required dependencies for the jenkins package
-sudo yum install java-17-openjdk -y
+sudo yum install java-11-openjdk -y
 sudo yum install jenkins -y
 sudo systemctl daemon-reload
 sudo systemctl enable jenkins
@@ -80,6 +80,8 @@ sudo su - jenkins
 
 # go to the sudoers
 sudo vi /etc/sudoers
+# under the line that says "## Same thing without a password", make a line like below;
+Jenkins		ALL=(ALL)	NOPASSWD: ALL
 
 *******************************************************************
 # how to uninstall jenkins

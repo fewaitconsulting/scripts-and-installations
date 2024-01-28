@@ -1,3 +1,6 @@
+# SonarQube is an open-source static testing analysis software, 
+# it is used by developers to manage source code quality and consistency.
+
 # SonarQube Installation With Wayne
 # We begin with these preliminary commands after creating our 
 # Redhat ec2 instances T2_medium with 4gb ram
@@ -51,3 +54,50 @@ echo "SonarQube installed and started!"
 # Now to run the maven_web_app, go to the repository, then into the pom.xml and replace the 
 # IP address here with your private IP from your ec2 instance 
 # <sonar.host.url>http://172.31.93.156:9000/</sonar.host.url> 
+
+###########################################################
+# These steps below will install sonarqube too for testing purposes
+# use this repo for reference 
+# https://github.com/ravdy/DevOps/blob/master/sonarqube/Setup_SonarQube.md
+
+#### Prerequisites #####
+# Source: https://docs.sonarqube.org/latest/requirements/requirements/
+
+# 1. An EC2 instance with a minimum of 2 GB RAM (t2.small)
+
+# 2. Java 11 installation
+amazon-linux-extras list
+amazon-linux-extras install java-openjdk11
+
+# 3. SonarQube cannot be run as root on Unix-based systems, 
+# so create a dedicated user account for SonarQube if necessary.
+sudo useradd sonar
+# Grand sudo access to sonar user
+sudo echo "sonar ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/sonar
+
+# set hostname for the sonarqube server
+sudo hostnamectl set-hostname sonar 
+sudo su - sonar
+
+#### Installation steps ####
+# 1. Download SonarQube latest verions on to EC2 instace
+cd /opt  
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.3.79811.zip 
+
+
+# 2. extract packages
+unzip sonarqube-9.9.3.79811.zip
+sudo mv sonarqube-9.9.3.79811 sonarqube
+
+# 3. Change ownershipt to the user and Switch to Linux binaries directory to start service
+chown -R sonar:sonar sonarqube  
+
+#start sonarQube server
+sh sonarqube/bin/linux-x86-64/sonar.sh start 
+sh sonarqube/bin/linux-x86-64/sonar.sh status
+
+# 4. Connect to the SonarQube server through the browser. It uses port 9000.
+# Note: Port should be opened in the Security group
+
+# http://<Public-IP>:9000
+

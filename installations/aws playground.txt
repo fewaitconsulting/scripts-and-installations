@@ -1,0 +1,46 @@
+aws playground
+
+https://341635973749.signin.aws.amazon.com/console
+username
+kk_labs_user_214707
+
+password
+WThVGb7Lo5co
+##############################################
+
+jenkins
+
+username
+admin
+
+password
+Adm!n321
+
+
+sonarqube token
+webapp
+1f4b1a41d1f7381b292c932a2e4823addc474dd8
+
+mvn sonar:sonar \
+  -Dsonar.projectKey=webapp \
+  -Dsonar.host.url=http://34.238.119.59:9000 \
+  -Dsonar.login=1f4b1a41d1f7381b292c932a2e4823addc474dd8
+
+maven_web_app github repo
+https://github.com/vector-gru/maven-web-application.git
+
+java version in jenkins kodekloud
+openjdk version "11.0.19" 2023-04-18
+
+maven 3.9.6
+
+java version in jenkins real aws
+openjdk version "17.0.9" 2023-10-17 LTS
+
+#uninstalling java 17
+sudo yum remove java-17-openjdk
+
+#installing java 11
+sudo yum install java-11-openjdk-devel
+
+
