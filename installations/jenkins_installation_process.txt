@@ -93,5 +93,30 @@ sudo userdel -D jenkins
 
 #jenkins lives in /var/lib/jenkins
 
+####################################################################
+# Deploying artifacts from jenkins to Nexus, steps as below
+
+1. Ensure that jenkins and Nexus servers are running
+
+2. Create repos in nexus-UI to upload artifacts
+	Nexus-IP= __ __ __ __ | __ __ __ __
+	http://18.233.225.14:8081/repository/tesla-webapp-snapshots/
+	http://http://18.233.225.14:8081/repository/tesla-web-releases/
+
+3. modify 'distributionManagement' tag with nexus repos details in pom.xml 
+	vi pom.xml
+		<distributionManagment>
+
+4. modify /maven/conf/setting.xml in maven JENKINS-server with login credentials
+=# vi /nexus/conf/settings.xml
+sudo vi /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven-3.9.6/conf/settings.xml
+	<server>
+	   <id>nexus</id>
+	   <username>admin</username>
+	   <password>admin123</password>
+	</server>
+
+4. Open required ports[8081] in Nexus server to allow traffic from jenkins server
+
 
 
