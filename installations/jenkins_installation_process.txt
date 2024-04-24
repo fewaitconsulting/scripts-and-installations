@@ -108,7 +108,7 @@ sudo userdel -D jenkins
 		<distributionManagment>
 
 4. modify /maven/conf/setting.xml in maven JENKINS-server with login credentials
-=# vi /nexus/conf/settings.xml
+
 sudo vi /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven-3.9.6/conf/settings.xml
 	<server>
 	   <id>nexus</id>
@@ -119,4 +119,10 @@ sudo vi /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven-3.9.6/
 4. Open required ports[8081] in Nexus server to allow traffic from jenkins server
 
 
+#####################################################################
+# Deploying artifacts from jenkins to tomcat
+
+1. In jenkins, install the plugin 'Deploy to container'
+
+2. Go to Post-build Actions (Not Build Steps), and fill the form
 

@@ -1,11 +1,11 @@
 aws playground
 
-https://341635973749.signin.aws.amazon.com/console
+https://915501509755.signin.aws.amazon.com/console
 username
-kk_labs_user_214707
+kk_labs_user_658984
 
 password
-WThVGb7Lo5co
+ovucCMwAq8A1
 ##############################################
 
 jenkins

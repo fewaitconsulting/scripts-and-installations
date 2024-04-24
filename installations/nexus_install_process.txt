@@ -31,6 +31,8 @@ sudo wget http://download.sonatype.com/nexus/3/nexus-3.15.2-01-unix.tar.gz
 
 sudo tar -zxvf nexus-3.15.2-01-unix.tar.gz
 sudo mv /opt/nexus-3.15.2-01 /opt/nexus
+sudo rm /opt/nexus-3.15.2-01-unix.tar.gz
+
 ##########################################################
 
 # 4. Change the owner and group permissions to /opt/nexus and /opt/sonatype-work directories.
@@ -59,6 +61,6 @@ echo "end of nexus installation"
 #=====================
 # access nexus on the browser
 # 34.229.62.93:8081
-# userName  --- ADMIN
-# Password   ADMIN123
+# userName  admin
+# Password  admin123
 

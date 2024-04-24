@@ -59,7 +59,7 @@ sudo find / -name context.xml
 
 sudo vi /opt/tomcat9/conf/server.xml # you can change the port number here
 # inside the connector tag
-
+# for now we have changed to port 8177
 
 # To enable external access to tomcat server,
 sudo vi /opt/tomcat9/webapps/manager/META-INF/context.xml
