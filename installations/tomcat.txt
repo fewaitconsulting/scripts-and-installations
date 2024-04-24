@@ -1,3 +1,0 @@
-Tomcat Installation Process
-
-Now the process begins as such...
