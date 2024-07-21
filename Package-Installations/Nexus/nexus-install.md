@@ -43,8 +43,9 @@ cd /opt
 # Install wget, git, nano, and unzip
 sudo yum install wget git nano unzip -y
 
-# Install Java JDK 17
+# Install Java JDK 11 & 17
 sudo yum install java-17-openjdk-devel -y
+sudo yum install java-11-openjdk-devel -y
 ```
 
 ### **Step 3: Download and Extract Nexus**
@@ -53,16 +54,16 @@ Download and extract the Nexus software.
 
 ```sh
 # Download Nexus
-sudo wget https://download.sonatype.com/nexus/3/nexus-3.70.1-02-java17-unix.tar.gz 
+sudo wget https://download.sonatype.com/nexus/3/nexus-3.70.1-02-java11-unix.tar.gz 
 
 # Extract the Nexus tar.gz file
-sudo tar -zxvf nexus-3.70.1-02-java17-unix.tar.gz
+sudo tar -zxvf nexus-3.70.1-02-java11-unix.tar.gz
 
 # Rename the Nexus directory
 sudo mv /opt/nexus-3.70.1-02 /opt/nexus
 
 # Remove the tar.gz file to clean up
-sudo rm -rf nexus-3.70.1-02-java17-unix.tar.gz
+sudo rm -rf nexus-3.70.1-02-java11-unix.tar.gz
 ```
 
 ### **Step 4: Grant File Permissions**
