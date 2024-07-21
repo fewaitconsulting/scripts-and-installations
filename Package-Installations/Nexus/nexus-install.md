@@ -12,7 +12,7 @@
 - A Redhat EC2 instance (t2.medium) with at least 4GB of RAM
 - A security group with required ports open (e.g., port 8081 for Nexus)
 - Attached security group to the EC2 instance
-- Java OpenJDK 17 installed
+- Java OpenJDK 11 & 17 installed
 
 ### **Step 1: Create Nexus User**
 
