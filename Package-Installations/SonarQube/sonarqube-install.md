@@ -17,7 +17,6 @@
 ### **Step 1: Create Sonar User**
 
 As a good security practice, it's recommended to create a new user to manage the SonarQube server.
-
 ```sh
 # Create a new user called 'sonar'
 sudo useradd sonar
@@ -34,7 +33,6 @@ sudo su - sonar
 ### **Step 2: Enable Password Authentication**
 
 Enable password authentication in the server for easier access management.
-
 ```sh
 # Enable password authentication
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
