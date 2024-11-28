@@ -46,16 +46,16 @@ Next, we will download, extract, and install Maven.
 
 ```sh
 # Download Maven
-sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.8/binaries/apache-maven-3.9.8-bin.zip
+ sudo wget https://downloads.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.zip
 
 # Extract the Maven zip file
-sudo unzip apache-maven-3.9.8-bin.zip
+sudo unzip apache-maven-3.9.9-bin.zip
 
 # Remove the zip file to clean up
-sudo rm -rf apache-maven-3.9.8-bin.zip
+sudo rm -rf apache-maven-3.9.9-bin.zip
 
 # Rename the Maven directory
-sudo mv apache-maven-3.9.8/ maven
+sudo mv apache-maven-3.9.9/ maven
 ```
 ### **Step 3: Set Environment Variables**
 
