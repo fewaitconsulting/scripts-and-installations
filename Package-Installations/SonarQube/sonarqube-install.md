@@ -113,8 +113,8 @@ Here's the formatted content in Markdown (.md):
 Once SonarQube is installed and running, you can access it on the browser using the format:
 
 ```
-http://<EC2-Public-IP>:9000
+http://EC2-Public-IP:9000
 ```
 
-Replace `<EC2-Public-IP>` with your EC2 instance’s actual public IP address.
+Replace `EC2-Public-IP` with your EC2 instance’s actual public IP address.
 ```
