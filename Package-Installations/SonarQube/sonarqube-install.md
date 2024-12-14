@@ -105,4 +105,16 @@ curl -v localhost:9000
 # Username: admin
 # Password: admin
 ```
-Access SonarQube on the browser using the format http://<publicIP>:9000, replacing <publicIP> with your instance's public IP address.
+Here's the formatted content in Markdown (.md):
+
+```markdown
+### Access SonarQube
+
+Once SonarQube is installed and running, you can access it on the browser using the format:
+
+```
+http://<EC2-Public-IP>:9000
+```
+
+Replace `<EC2-Public-IP>` with your EC2 instance’s actual public IP address.
+```
