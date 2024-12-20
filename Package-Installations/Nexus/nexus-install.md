@@ -45,6 +45,10 @@ sudo yum install wget git nano unzip -y
 
 # Install Java JDK 17
 sudo yum install java-17-openjdk-devel -y
+
+# Verify Java installation
+java -version
+
 ```
 
 ### **Step 3: Download and Extract Nexus**
