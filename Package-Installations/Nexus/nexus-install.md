@@ -12,7 +12,7 @@
 - A Redhat EC2 instance (t2.medium) with at least 4GB of RAM
 - A security group with required ports open (e.g., port 8081 for Nexus)
 - Attached security group to the EC2 instance
-- Java OpenJDK 11 & 17 installed
+- Java OpenJDK 17 installed
 
 ### **Step 1: Create Nexus User**
 
@@ -43,9 +43,8 @@ cd /opt
 # Install wget, git, nano, and unzip
 sudo yum install wget git nano unzip -y
 
-# Install Java JDK 11 & 17
+# Install Java JDK 17
 sudo yum install java-17-openjdk-devel -y
-sudo yum install java-11-openjdk-devel -y
 ```
 
 ### **Step 3: Download and Extract Nexus**
@@ -53,17 +52,17 @@ sudo yum install java-11-openjdk-devel -y
 Download and extract the Nexus software.
 
 ```sh
-# Download Nexus
-sudo wget https://download.sonatype.com/nexus/3/nexus-3.70.1-02-java11-unix.tar.gz 
+    # Download Nexus
+    sudo wget https://download.sonatype.com/nexus/3/nexus-3.74.0-05-unix.tar.gz
 
-# Extract the Nexus tar.gz file
-sudo tar -zxvf nexus-3.70.1-02-java11-unix.tar.gz
+    # Extract the Nexus tar.gz file
+    sudo tar -zxvf nexus-3.74.0-05-unix.tar.gz
 
-# Rename the Nexus directory
-sudo mv /opt/nexus-3.70.1-02 /opt/nexus
+    # Rename the Nexus directory for simplicity
+    sudo mv /opt/nexus-3.74.0-05 /opt/nexus
 
-# Remove the tar.gz file to clean up
-sudo rm -rf nexus-3.70.1-02-java11-unix.tar.gz
+    # Remove the tar.gz file to clean up
+    sudo rm -rf nexus-3.74.0-05-unix.tar.gz
 ```
 
 ### **Step 4: Grant File Permissions**
@@ -104,5 +103,17 @@ sudo systemctl start nexus
 # Check the status of the Nexus service
 sudo systemctl status nexus
 
-echo "End of Nexus installation"
 ```
+
+## **<span style="color:green">Access Nexus</span>**
+
+- **Open your web browser and go to** `http://<your-ip-address>:8081`.
+
+## **<span style="color:green">Retrieve the Admin Password</span>**
+
+**Use the following command to display the initial admin password:**
+```bash
+    # View the admin password
+    cat /opt/sonatype-work/nexus3/admin.password
+```
+
