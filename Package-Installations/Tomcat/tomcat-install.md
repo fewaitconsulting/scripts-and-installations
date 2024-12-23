@@ -43,24 +43,23 @@ sudo yum install wget unzip -y
 Download and extract the Apache Tomcat server.
 
 ```sh
-# Download Apache Tomcat version 9.0.91
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.91/bin/apache-tomcat-9.0.91.zip
+# Download Apache Tomcat version 9.0.97
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.97/bin/apache-tomcat-9.0.97.zip
 
-# Extract the downloaded Tomcat zip file
-sudo unzip apache-tomcat-9.0.91.zip
+# Extract the Tomcat zip file
+sudo unzip apache-tomcat-9.0.97.zip
 
-# Remove the zip file to clean up
-sudo rm -rf apache-tomcat-9.0.91.zip
+# Clean up by removing the zip file
+sudo rm -rf apache-tomcat-9.0.97.zip
+
+# Rename the directory for simplicity
+sudo mv apache-tomcat-9.0.97 tomcat9
 ```
 
 ### **Step 3: Set Up Tomcat Directory and Permissions**
 
-Rename the Tomcat directory for better naming conventions and set the necessary permissions.
-
+Assign permissions to the Tomcat directory.
 ```sh
-# Rename the Tomcat directory
-sudo mv apache-tomcat-9.0.91 tomcat9
-
 # Assign executable permissions to the Tomcat home directory
 sudo chmod 777 -R /opt/tomcat9
 
