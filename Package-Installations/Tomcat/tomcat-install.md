@@ -28,14 +28,12 @@ sudo su - ec2-user
 # Change to the /opt directory
 cd /opt
 
-# Install Git and Wget
-sudo yum install git wget -y
+# Install git, wget and unzip
+sudo yum install git wget unzip -y
 
 # Install Java JDK 17
 sudo yum install java-17-openjdk-devel -y
 
-# Install Wget and Unzip packages
-sudo yum install wget unzip -y
 ```
 
 ### **Step 2: Download and Extract Tomcat**
@@ -43,17 +41,17 @@ sudo yum install wget unzip -y
 Download and extract the Apache Tomcat server.
 
 ```sh
-# Download Apache Tomcat version 9.0.97
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.97/bin/apache-tomcat-9.0.97.zip
+# Download Apache Tomcat version 9.0.98
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.98/bin/apache-tomcat-9.0.98.zip
 
 # Extract the Tomcat zip file
-sudo unzip apache-tomcat-9.0.97.zip
+sudo unzip apache-tomcat-9.0.98.zip
 
 # Clean up by removing the zip file
-sudo rm -rf apache-tomcat-9.0.97.zip
+sudo rm -rf apache-tomcat-9.0.98.zip
 
 # Rename the directory for simplicity
-sudo mv apache-tomcat-9.0.97 tomcat9
+sudo mv apache-tomcat-9.0.98 tomcat9
 ```
 
 ### **Step 3: Set Up Tomcat Directory and Permissions**
