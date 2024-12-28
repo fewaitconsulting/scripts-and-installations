@@ -57,16 +57,16 @@ Download and extract the Nexus software.
 
 ```sh
     # Download Nexus
-    sudo wget https://download.sonatype.com/nexus/3/nexus-3.74.0-05-unix.tar.gz
+    sudo wget https://download.sonatype.com/nexus/3/nexus-3.75.1-01-unix.tar.gz
 
     # Extract the Nexus tar.gz file
-    sudo tar -zxvf nexus-3.74.0-05-unix.tar.gz
+    sudo tar -zxvf nexus-3.75.1-01-unix.tar.gz
 
     # Rename the Nexus directory for simplicity
-    sudo mv /opt/nexus-3.74.0-05 /opt/nexus
+    sudo mv /opt/nexus-3.75.1-01 /opt/nexus
 
     # Remove the tar.gz file to clean up
-    sudo rm -rf nexus-3.74.0-05-unix.tar.gz
+    sudo rm -rf nexus-3.75.1-01-unix.tar.gz
 ```
 
 ### **Step 4: Grant File Permissions**
