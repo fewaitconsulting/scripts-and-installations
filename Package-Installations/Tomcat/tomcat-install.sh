@@ -56,4 +56,8 @@ sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
 echo "Starting Tomcat using soft link..."
 starttomcat
 
+# Switch back to the ec2-user
+echo "Switching User to Tomcat user ..."
+sudo su - ec2-user
+
 echo "Tomcat setup completed successfully!"
