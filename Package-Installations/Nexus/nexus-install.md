@@ -96,9 +96,39 @@ echo 'run_as_user="nexus"' | sudo tee /opt/nexus/bin/nexus.rc
 
 Configure Nexus to run as a service.
 
+# Setting Up a Systemd Service for Nexus
+
+## 1️Create a Systemd Service File
+
+### Open a new service file for Nexus:
+```bash
+sudo vi /etc/systemd/system/nexus.service
+```
+
+### Add the following content:
+```ini
+[Unit]
+Description=Nexus Repository Manager
+After=network.target
+
+[Service]
+Type=forking
+User=nexus
+Group=nexus
+ExecStart=/opt/nexus/bin/nexus start
+ExecStop=/opt/nexus/bin/nexus stop
+Restart=on-abort
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+```
+
+- Ensure the `User=nexus` matches the user running Nexus.  
+- Check if `/opt/nexus/bin/nexus` exists; if it's installed in another location, update the path.
+
+
 ```sh
-# Create a symbolic link for the Nexus service
-sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
 
 # Enable and start the Nexus service
 sudo systemctl enable nexus
