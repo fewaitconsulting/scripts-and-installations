@@ -42,16 +42,16 @@ Download and extract the Apache Tomcat server.
 
 ```sh
 # Download Apache Tomcat version 9.0.98
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.98/bin/apache-tomcat-9.0.98.zip
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.102/bin/apache-tomcat-9.0.102.zip
 
 # Extract the Tomcat zip file
-sudo unzip apache-tomcat-9.0.98.zip
+sudo unzip apache-tomcat-9.0.102.zip
 
 # Clean up by removing the zip file
-sudo rm -rf apache-tomcat-9.0.98.zip
+sudo rm -rf apache-tomcat-9.0.102.zip
 
 # Rename the directory for simplicity
-sudo mv apache-tomcat-9.0.98 tomcat9
+sudo mv apache-tomcat-9.0.102 tomcat9
 ```
 
 ### **Step 3: Set Up Tomcat Directory and Permissions**
