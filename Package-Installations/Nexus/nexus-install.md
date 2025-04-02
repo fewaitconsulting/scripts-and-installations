@@ -98,7 +98,7 @@ Configure Nexus to run as a service.
 
 # Setting Up a Systemd Service for Nexus
 
-## 1️Create a Systemd Service File
+## Create a Systemd Service File
 
 ### Open a new service file for Nexus:
 ```bash
@@ -127,10 +127,10 @@ WantedBy=multi-user.target
 - Ensure the `User=nexus` matches the user running Nexus.  
 - Check if `/opt/nexus/bin/nexus` exists; if it's installed in another location, update the path.
 
-
 ```sh
 
-# Enable and start the Nexus service
+# Reload, Enable and start the Nexus service
+sudo systemctl daemon-reload
 sudo systemctl enable nexus
 sudo systemctl start nexus
 
