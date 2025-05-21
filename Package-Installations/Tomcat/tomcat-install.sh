@@ -19,19 +19,19 @@ sudo yum install java-17-openjdk-devel -y
 
 # Step 2: Download and Extract Tomcat
 
-echo "Downloading Apache Tomcat v9.0.104..."
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.104/bin/apache-tomcat-9.0.104.zip
+echo "Downloading Apache Tomcat v9.0.105..."
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.105/bin/apache-tomcat-9.0.105.zip
 
 echo "Extracting Apache Tomcat..."
-sudo unzip apache-tomcat-9.0.104.zip
+sudo unzip apache-tomcat-9.0.105.zip
 
 # Clean up by removing the zip file
 echo "Cleaning up zip file..."
-sudo rm -rf apache-tomcat-9.0.104.zip
+sudo rm -rf apache-tomcat-9.0.105.zip
 
 # Rename the directory for simplicity
 echo "Renaming Tomcat directory to 'tomcat9'..."
-sudo mv apache-tomcat-9.0.104 tomcat9
+sudo mv apache-tomcat-9.0.105 tomcat9
 
 # Step 3: Set Up Tomcat Directory and Permissions
 
